@@ -48,7 +48,7 @@
         android:id="@+id/afisareInformatii_TV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aici o sa apara informatiile tastaturii"
+        android:text="@string/aici_o_sa_apara_informatiile_tastaturii"
         />
 
 </LinearLayout>
