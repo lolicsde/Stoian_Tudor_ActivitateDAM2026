@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">laborator4</string>
+    <string name="apasa">Apasa</string>
+    <string name="introduceti_numele">Introduceti numele</string>
+    <string name="esti_student">Esti student?</string>
+    <string name="adaugare_tastatura">Adaugare tastatura</string>
+    <string name="completeaza_datele_tastaturii">Completeaza datele tastaturii</string>
+    <string name="numele_tastaturii">Numele tastaturii</string>
+    <string name="numele_brandului">Numele brandului</string>
+    <string name="are_tenkey">Are tenkey?</string>
+    <string name="este_mecanica">Este mecanica?</string>
+    <string name="culoare_led">Culoare LED</string>
+    <string name="adaugare_informatii">Adaugare informatii</string>
+</resources>
