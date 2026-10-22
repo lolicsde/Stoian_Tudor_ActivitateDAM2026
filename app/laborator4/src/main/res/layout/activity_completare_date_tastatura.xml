@@ -43,13 +43,12 @@
         android:layout_height="wrap_content"
         android:text="@string/este_mecanica"
         />
-    
-    <EditText
-        android:id="@+id/culoareLED_ET"
+
+    <Spinner
+        android:id="@+id/culoareLED_S"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/culoare_led"
-        android:inputType="text"
+
         />
 
     <Button
