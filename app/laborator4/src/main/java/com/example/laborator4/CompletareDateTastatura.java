@@ -2,6 +2,8 @@ package com.example.laborator4;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -24,6 +27,7 @@ public class CompletareDateTastatura extends AppCompatActivity {
     private Spinner s_culoare_led;
     private RadioGroup rg_culoare_switch;
     private CheckBox cb_mecanica;
+
         @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,14 +94,22 @@ public class CompletareDateTastatura extends AppCompatActivity {
             culoare_switch = buton_selectat.getText().toString();
         }
 
-        Intent it = new Intent();
-        it.putExtra("brand", brand);
-        it.putExtra("nume", nume);
-        it.putExtra("TK", TK);
-        it.putExtra("mecanica", mecanica);
-        it.putExtra("culoare_led", culoare_led);
-        it.putExtra("culoare_switch", culoare_switch);
-        setResult(RESULT_OK, it);
-        finish();
+        if(brand.isEmpty()){
+            Toast.makeText(this, "Introdu un brand!", Toast.LENGTH_SHORT).show();
+        }
+        if(nume.isEmpty()){
+            Toast.makeText(this, "Introdu un nume!", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Intent it = new Intent();
+            it.putExtra("brand", brand);
+            it.putExtra("nume", nume);
+            it.putExtra("TK", TK);
+            it.putExtra("mecanica", mecanica);
+            it.putExtra("culoare_led", culoare_led);
+            it.putExtra("culoare_switch", culoare_switch);
+            setResult(RESULT_OK, it);
+            finish();
+        }
     }
 }
