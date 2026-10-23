@@ -12,6 +12,11 @@
     <string name="culoare_led">Culoare LED</string>
     <string name="adaugare_informatii">Adaugare informatii</string>
     <string name="aici_o_sa_apara_informatiile_tastaturii">Aici o sa apara informatiile tastaturii</string>
+    <string name="selecteaza_culoarea_ledului">Selecteaza culoarea LEDului:</string>
+    <string name="selecteaza_tipul_de_switch">Selecteaza tipul de switch:</string>
+    <string name="mx_blue">MX Blue</string>
+    <string name="mx_red">MX Red</string>
+    <string name="mx_black">MX Black</string>
     <string-array name="elemente_spinner">
         <item>Rosu</item>
         <item>Albastru</item>

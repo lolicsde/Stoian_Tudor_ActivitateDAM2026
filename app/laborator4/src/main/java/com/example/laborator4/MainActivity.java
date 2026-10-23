@@ -52,8 +52,15 @@ public class MainActivity extends AppCompatActivity {
                 Boolean TK = data.getBooleanExtra("TK", false);
                 Boolean mecanica = data.getBooleanExtra("mecanica", false);
                 String culoare_led = data.getStringExtra("culoare_led");
+                String culoare_switch = data.getStringExtra("culoare_switch");
 
-                StoianTudor tastatura1 = new StoianTudor(brand, nume, TK, mecanica, culoare_led);
+                StoianTudor tastatura1;
+                if(culoare_switch == null){
+                    tastatura1 = new StoianTudor(brand, nume, TK, mecanica, culoare_led);
+                }
+                else{
+                    tastatura1 = new StoianTudor(brand, nume, TK, mecanica,  culoare_led, culoare_switch);
+                }
                 TextView afisare_informatii = findViewById(R.id.afisareInformatii_TV);
                 afisare_informatii.setText(tastatura1.toString());
             }

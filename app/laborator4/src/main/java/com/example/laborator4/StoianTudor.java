@@ -8,6 +8,7 @@ public class StoianTudor {
     Boolean tenkey;
     Boolean mecanica;
     String culoareLED;
+    String culoareSwitch;
 
     public StoianTudor(String brand, String nume, Boolean tenkey, Boolean mecanica, String culoareLED) {
         this.brand = brand;
@@ -15,6 +16,16 @@ public class StoianTudor {
         this.tenkey = tenkey;
         this.mecanica = mecanica;
         this.culoareLED = culoareLED;
+        this.culoareSwitch = null;
+    }
+
+    public StoianTudor(String brand, String nume, Boolean tenkey, Boolean mecanica, String culoareLED, String culoareSwitch){
+        this.brand = brand;
+        this.nume = nume;
+        this.tenkey = tenkey;
+        this.mecanica = mecanica;
+        this.culoareLED = culoareLED;
+        this.culoareSwitch = culoareSwitch;
     }
 
     public StoianTudor(){
@@ -23,6 +34,7 @@ public class StoianTudor {
         this.tenkey = null;
         this.mecanica = null;
         this.culoareLED = null;
+        this.culoareSwitch = null;
     }
 
     public String getBrand() {
@@ -83,8 +95,16 @@ public class StoianTudor {
             este_mecanica = "nu este";
         }
 
+        String are_switch;
+        if(this.culoareSwitch == null){
+            are_switch = "";
+        }
+        else{
+            are_switch = " Are switch-uri de culoare " + this.culoareSwitch + ".";
+        }
+
         return "Tastatura este de la brandul " + this.brand.toUpperCase() + ", se numeste " + this.nume.toUpperCase()
                 + ", " + are_TK + " numpad, " + este_mecanica + " mecanica, iar culoarea ledurilor este " +
-                this.culoareLED.toLowerCase() + ".";
+                this.culoareLED.toLowerCase() + "." + are_switch;
     }
 }
