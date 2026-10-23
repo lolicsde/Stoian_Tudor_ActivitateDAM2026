@@ -90,8 +90,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/adaugare_informatii"
         android:onClick="trimitereInformatii"
-        />
+        android:text="@string/adaugare_informatii" />
 
 </LinearLayout>
