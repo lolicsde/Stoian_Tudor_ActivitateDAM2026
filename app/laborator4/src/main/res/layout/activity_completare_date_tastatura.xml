@@ -6,35 +6,70 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".CompletareDateTastatura">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/completeaza_datele_tastaturii"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorPrimary"
+        android:layout_marginBottom="24dp"
         />
 
-    <EditText
-        android:id="@+id/brandTastatura_ET"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/numele_brandului"
-        android:inputType="text"
-        />
+        android:layout_marginBottom="12dp">
 
-    <EditText
-        android:id="@+id/numeTastatura_ET"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/brandTastatura_ET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/brandTastatura_ET"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="@string/numele_brandului"-->
+<!--        android:inputType="text"-->
+<!--        />-->
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/numele_tastaturii"
-        android:inputType="text"
-        />
+        android:layout_marginBottom="12dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/numeTastatura_ET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/numeTastatura_ET"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="@string/numele_tastaturii"-->
+<!--        android:inputType="text"-->
+<!--        />-->
 
     <CheckBox
         android:id="@+id/areTK_CB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/are_numpad"
+        android:textSize="16sp"
+        android:textColor="?attr/colorPrimary"
         />
 
     <CheckBox
@@ -42,25 +77,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/este_mecanica"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp"
+        android:textColor="?attr/colorPrimary"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/selecteaza_culoarea_ledului"
+        android:textSize="16sp"
+        android:textColor="?attr/colorPrimary"
+        android:layout_marginBottom="4dp"
         />
 
     <Spinner
         android:id="@+id/culoareLED_S"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:layout_marginBottom="12dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/selecteaza_tipul_de_switch"
+        android:textSize="16sp"
+        android:textColor="?attr/colorPrimary"
+        android:layout_marginBottom="4dp"
         />
 
     <RadioGroup
@@ -72,18 +116,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mx_blue"
+            android:textColor="?attr/colorSecondary"
             />
         <RadioButton
             android:id="@+id/radio_mxred"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mx_red"
+            android:textColor="?attr/colorSecondary"
             />
         <RadioButton
             android:id="@+id/radio_mxblack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/mx_black"
+            android:textColor="?attr/colorSecondary"
             />
     </RadioGroup>
 
