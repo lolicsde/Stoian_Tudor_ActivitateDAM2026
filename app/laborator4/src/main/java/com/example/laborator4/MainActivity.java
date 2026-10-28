@@ -3,6 +3,7 @@ package com.example.laborator4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,7 +16,12 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private List<StoianTudor> listaTastaturi = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        Button buton_activitate_lista = findViewById(R.id.bttn_deschideActivitateLista);
+        buton_activitate_lista.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), AfisareListaObiecte.class);
+                it.putExtra("lista_tastaturi", (ArrayList<StoianTudor>)listaTastaturi);
+                startActivity(it);
+            }
         });
     }
 
@@ -63,6 +79,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 TextView afisare_informatii = findViewById(R.id.afisareInformatii_TV);
                 afisare_informatii.setText(tastatura1.toString());
+
+                listaTastaturi.add(tastatura1);
             }
         }
     }

@@ -1,6 +1,8 @@
 package com.example.laborator4;
 
-public class StoianTudor {
+import java.io.Serializable;
+
+public class StoianTudor implements Serializable {
     //Sa zicem ca obiectul este o tastatura -> contine si S si T
 
     String brand;

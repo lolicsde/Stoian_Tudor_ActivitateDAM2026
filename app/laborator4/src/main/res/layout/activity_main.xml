@@ -51,4 +51,11 @@
         android:text="@string/aici_o_sa_apara_informatiile_tastaturii"
         />
 
+    <Button
+        android:id="@+id/bttn_deschideActivitateLista"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/catre_lista_de_obiecte"
+        />
+
 </LinearLayout>

@@ -17,6 +17,7 @@
     <string name="mx_blue">MX Blue</string>
     <string name="mx_red">MX Red</string>
     <string name="mx_black">MX Black</string>
+    <string name="catre_lista_de_obiecte">Catre lista de obiecte</string>
     <string-array name="elemente_spinner">
         <item>Rosu</item>
         <item>Albastru</item>
