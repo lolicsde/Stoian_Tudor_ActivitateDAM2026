@@ -1,8 +1,13 @@
 package com.example.laborator4;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
-public class StoianTudor implements Serializable {
+public class StoianTudor implements Parcelable {
     //Sa zicem ca obiectul este o tastatura -> contine si S si T
 
     String brand;
@@ -29,7 +34,6 @@ public class StoianTudor implements Serializable {
         this.culoareLED = culoareLED;
         this.culoareSwitch = culoareSwitch;
     }
-
     public StoianTudor(){
         this.brand = null;
         this.nume = null;
@@ -38,6 +42,44 @@ public class StoianTudor implements Serializable {
         this.culoareLED = null;
         this.culoareSwitch = null;
     }
+
+    protected StoianTudor(Parcel in) {
+        brand = in.readString();
+        nume = in.readString();
+        byte tmpTenkey = in.readByte();
+        tenkey = tmpTenkey == 0 ? null : tmpTenkey == 1;
+        byte tmpMecanica = in.readByte();
+        mecanica = tmpMecanica == 0 ? null : tmpMecanica == 1;
+        culoareLED = in.readString();
+        culoareSwitch = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(brand);
+        dest.writeString(nume);
+        dest.writeByte((byte) (tenkey == null ? 0 : tenkey ? 1 : 2));
+        dest.writeByte((byte) (mecanica == null ? 0 : mecanica ? 1 : 2));
+        dest.writeString(culoareLED);
+        dest.writeString(culoareSwitch);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<StoianTudor> CREATOR = new Creator<StoianTudor>() {
+        @Override
+        public StoianTudor createFromParcel(Parcel in) {
+            return new StoianTudor(in);
+        }
+
+        @Override
+        public StoianTudor[] newArray(int size) {
+            return new StoianTudor[size];
+        }
+    };
 
     public String getBrand() {
         return brand;
@@ -77,6 +119,14 @@ public class StoianTudor implements Serializable {
 
     public void setCuloareLED(String culoareLED) {
         this.culoareLED = culoareLED;
+    }
+
+    public String getCuloareSwitch() {
+        return culoareSwitch;
+    }
+
+    public void setCuloareSwitch(String culoareSwitch) {
+        this.culoareSwitch = culoareSwitch;
     }
 
     @Override

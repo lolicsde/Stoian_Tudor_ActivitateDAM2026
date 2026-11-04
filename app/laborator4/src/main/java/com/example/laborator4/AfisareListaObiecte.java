@@ -1,5 +1,7 @@
 package com.example.laborator4;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,31 +32,37 @@ public class AfisareListaObiecte extends AppCompatActivity {
             return insets;
         });
 
-        lista_primita = (ArrayList<StoianTudor>) getIntent().getSerializableExtra("lista_tastaturi");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            lista_primita = getIntent().getParcelableArrayListExtra("lista_tastaturi", StoianTudor.class);
+        }
 
-        ArrayAdapter<StoianTudor> adapter = new ArrayAdapter<>(
-                getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                lista_primita
-        );
+        AdaptorTastaturi adaptor = new AdaptorTastaturi(getApplicationContext(), lista_primita);
+
+//        ArrayAdapter<StoianTudor> adapter = new ArrayAdapter<>(
+//                getApplicationContext(),
+//                android.R.layout.simple_list_item_1,
+//                lista_primita
+//        );
 
         ListView lista_obiecte = findViewById(R.id.lv_lista_obiecte);
-        lista_obiecte.setAdapter(adapter);
+        lista_obiecte.setAdapter(adaptor);
 
         lista_obiecte.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getApplicationContext(), lista_primita.get(position).toString(), Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(getApplicationContext(), CompletareDateTastatura.class);
+
+//                Toast.makeText(getApplicationContext(), lista_primita.get(position).toString(), Toast.LENGTH_SHORT).show();
             }
         });
 
-        lista_obiecte.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                adapter.remove(lista_primita.get(position));
-                adapter.notifyDataSetChanged();
-                return true;
-            }
-        });
+//        lista_obiecte.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                adapter.remove(lista_primita.get(position));
+//                adapter.notifyDataSetChanged();
+//                return true;
+//            }
+//        });
     }
 }
