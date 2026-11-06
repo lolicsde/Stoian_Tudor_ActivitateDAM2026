@@ -26,6 +26,10 @@
             android:name=".AfisareListaObiecte"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".actualizare_date_tastaturi"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

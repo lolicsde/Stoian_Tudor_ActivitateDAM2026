@@ -18,6 +18,8 @@
     <string name="mx_red">MX Red</string>
     <string name="mx_black">MX Black</string>
     <string name="catre_lista_de_obiecte">Catre lista de obiecte</string>
+    <string name="actualizare_obiect">Actualizare obiect</string>
+    <string name="actualizeaza_datele_tastaturii">Actualizeaza datele tastaturii</string>
     <string-array name="elemente_spinner">
         <item>Rosu</item>
         <item>Albastru</item>
