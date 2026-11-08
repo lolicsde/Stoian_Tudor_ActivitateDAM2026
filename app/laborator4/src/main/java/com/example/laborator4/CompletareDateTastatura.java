@@ -1,12 +1,14 @@
 package com.example.laborator4;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -27,6 +29,10 @@ public class CompletareDateTastatura extends AppCompatActivity {
     private Spinner s_culoare_led;
     private RadioGroup rg_culoare_switch;
     private CheckBox cb_mecanica;
+    private Button bttn_trimitereInformatii;
+    private EditText et_brand;
+    private EditText et_nume;
+    private CheckBox cb_TK;
 
         @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +69,105 @@ public class CompletareDateTastatura extends AppCompatActivity {
             }
         });
 
+        et_brand = findViewById(R.id.brandTastatura_ET);
+        et_nume = findViewById(R.id.numeTastatura_ET);
+        cb_TK = findViewById(R.id.areTK_CB);
+
+        bttn_trimitereInformatii = findViewById(R.id.bttn_trimiteInformatii);
+
+        if(getIntent().hasExtra("sursa")){
+            String sursa = getIntent().getStringExtra("sursa");
+            if("AfisareListaObiecte".equals(sursa)){
+                StoianTudor tastatura = null;
+                int pozitie = getIntent().getIntExtra("pozitie", -1);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    tastatura = getIntent().getParcelableExtra("obiect_selectat", StoianTudor.class);
+                }
+
+                et_brand.setText(tastatura.getBrand());
+                et_nume.setText(tastatura.getNume());
+                cb_TK.setChecked(tastatura.getTenkey());
+                cb_mecanica.setChecked(tastatura.getMecanica());
+                int pozitieSpinner = adapter.getPosition(tastatura.getCuloareLED());
+                s_culoare_led.setSelection(pozitieSpinner);
+
+                bttn_trimitereInformatii.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String brand = et_brand.getText().toString();
+                        String nume = et_nume.getText().toString();
+                        Boolean TK = cb_TK.isChecked();
+                        Boolean mecanica = cb_mecanica.isChecked();
+                        String culoare_led = s_culoare_led.getSelectedItem().toString();
+                        String culoare_switch;
+
+                        int id_switch_selectat = rg_culoare_switch.getCheckedRadioButtonId();
+                        if(id_switch_selectat == -1){
+                            culoare_switch = null;
+                        }
+                        else{
+                            RadioButton buton_selectat = findViewById(id_switch_selectat);
+                            culoare_switch = buton_selectat.getText().toString();
+                        }
+
+                        if(brand.isEmpty()){
+                            Toast.makeText(getApplicationContext(), "Introdu un brand!", Toast.LENGTH_SHORT).show();
+                        }
+                        if(nume.isEmpty()){
+                            Toast.makeText(getApplicationContext(), "Introdu un nume!", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            StoianTudor tastatura = new StoianTudor(brand, nume, TK, mecanica, culoare_led, culoare_switch);
+                            Intent it = new Intent();
+                            it.putExtra("obiect_modificat", tastatura);
+                            it.putExtra("pozitie", pozitie);
+                            setResult(RESULT_OK, it);
+                            finish();
+                        }
+                    }
+                });
+            }
+        }
+        else{
+            bttn_trimitereInformatii.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String brand = et_brand.getText().toString();
+                    String nume = et_nume.getText().toString();
+                    Boolean TK = cb_TK.isChecked();
+                    Boolean mecanica = cb_mecanica.isChecked();
+                    String culoare_led = s_culoare_led.getSelectedItem().toString();
+                    String culoare_switch;
+
+                    int id_switch_selectat = rg_culoare_switch.getCheckedRadioButtonId();
+                    if(id_switch_selectat == -1){
+                        culoare_switch = null;
+                    }
+                    else{
+                        RadioButton buton_selectat = findViewById(id_switch_selectat);
+                        culoare_switch = buton_selectat.getText().toString();
+                    }
+
+                    if(brand.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Introdu un brand!", Toast.LENGTH_SHORT).show();
+                    }
+                    if(nume.isEmpty()){
+                        Toast.makeText(getApplicationContext(), "Introdu un nume!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Intent it = new Intent();
+                        it.putExtra("brand", brand);
+                        it.putExtra("nume", nume);
+                        it.putExtra("TK", TK);
+                        it.putExtra("mecanica", mecanica);
+                        it.putExtra("culoare_led", culoare_led);
+                        it.putExtra("culoare_switch", culoare_switch);
+                        setResult(RESULT_OK, it);
+                        finish();
+                    }
+                }
+            });
+        }
     }
 
     public void schimbareStareRadio(RadioGroup rg, boolean stare){
@@ -71,45 +176,6 @@ public class CompletareDateTastatura extends AppCompatActivity {
             RadioButton r = (RadioButton) rg.getChildAt(i);
             r.setEnabled(stare);
             r.setClickable(stare);
-        }
-    }
-    public void trimitereInformatii(View view) {
-        EditText et_brand = findViewById(R.id.brandTastatura_ET);
-        EditText et_nume = findViewById(R.id.numeTastatura_ET);
-        CheckBox cb_TK = findViewById(R.id.areTK_CB);
-
-        String brand = et_brand.getText().toString();
-        String nume = et_nume.getText().toString();
-        Boolean TK = cb_TK.isChecked();
-        Boolean mecanica = cb_mecanica.isChecked();
-        String culoare_led = s_culoare_led.getSelectedItem().toString();
-        String culoare_switch;
-
-        int id_switch_selectat = rg_culoare_switch.getCheckedRadioButtonId();
-        if(id_switch_selectat == -1){
-            culoare_switch = null;
-        }
-        else{
-            RadioButton buton_selectat = findViewById(id_switch_selectat);
-            culoare_switch = buton_selectat.getText().toString();
-        }
-
-        if(brand.isEmpty()){
-            Toast.makeText(this, "Introdu un brand!", Toast.LENGTH_SHORT).show();
-        }
-        if(nume.isEmpty()){
-            Toast.makeText(this, "Introdu un nume!", Toast.LENGTH_SHORT).show();
-        }
-        else{
-            Intent it = new Intent();
-            it.putExtra("brand", brand);
-            it.putExtra("nume", nume);
-            it.putExtra("TK", TK);
-            it.putExtra("mecanica", mecanica);
-            it.putExtra("culoare_led", culoare_led);
-            it.putExtra("culoare_switch", culoare_switch);
-            setResult(RESULT_OK, it);
-            finish();
         }
     }
 }

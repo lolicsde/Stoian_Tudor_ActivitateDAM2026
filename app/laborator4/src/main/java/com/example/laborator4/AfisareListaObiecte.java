@@ -74,8 +74,9 @@ public class AfisareListaObiecte extends AppCompatActivity {
         lista_obiecte.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent it = new Intent(getApplicationContext(), actualizare_date_tastaturi.class);
+                Intent it = new Intent(getApplicationContext(), CompletareDateTastatura.class);
 
+                it.putExtra("sursa", "AfisareListaObiecte");
                 it.putExtra("obiect_selectat", lista_primita.get(position));
                 it.putExtra("pozitie", position);
 

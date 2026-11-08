@@ -38,10 +38,10 @@
 
 
     <Button
+        android:id="@+id/bttn_adaugareTastatura"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/adaugare_tastatura"
-        android:onClick="recuperareInformatii"
         />
 
     <TextView
