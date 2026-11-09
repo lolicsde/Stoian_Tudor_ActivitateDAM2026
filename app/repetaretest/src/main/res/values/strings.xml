@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">RepetareTest</string>
+    <string name="introdu_datele_pisicii">Introdu datele pisicii</string>
+    <string name="aici_vor_aparea_datele_ultimei_pisici_adaugate">Aici vor aparea datele ultimei pisici adaugate</string>
+    <string name="catre_adaugare_pisica">Catre Adaugare Pisica</string>
+    <string name="introdu_rasa_pisicii">Introdu rasa pisicii</string>
+    <string name="selecteaza_greutatea">Selecteaza greutatea</string>
+    <string name="are_pedigree">Are Pedigree?</string>
+    <string name="este_vaccinata">Este vaccinata?</string>
+    <string name="introdu_pretul_pisicii">Introdu pretul pisicii</string>
+    <string name="adauga_pisica">Adauga Pisica</string>
+    <string name="catre_lista_pisici">Catre Lista Pisici</string>
+    <string-array name="culori_pisici">
+        <item>Alba</item>
+        <item>Neagra</item>
+        <item>Portocalie</item>
+        <item>Pestrita</item>
+    </string-array>
+</resources>
