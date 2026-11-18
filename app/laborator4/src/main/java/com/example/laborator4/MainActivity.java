@@ -8,12 +8,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -28,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bttn_adaugareTastatura;
     private ActivityResultLauncher<Intent> lansareAdaugareTastatura;
     private TextView tv_afisareInformatii;
+    private Button bttn_deschideImaginiTastaturi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent it = new Intent(getApplicationContext(), AfisareListaObiecte.class);
                 it.putExtra("lista_tastaturi", (ArrayList<StoianTudor>)listaTastaturi);
+                startActivity(it);
+            }
+        });
+
+        bttn_deschideImaginiTastaturi = findViewById(R.id.bttn_deschideImaginiTastaturi);
+        bttn_deschideImaginiTastaturi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(), ImaginiTastaturi.class);
                 startActivity(it);
             }
         });

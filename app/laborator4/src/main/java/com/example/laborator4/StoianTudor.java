@@ -1,5 +1,6 @@
 package com.example.laborator4;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -10,12 +11,15 @@ import java.io.Serializable;
 public class StoianTudor implements Parcelable {
     //Sa zicem ca obiectul este o tastatura -> contine si S si T
 
-    String brand;
-    String nume;
-    Boolean tenkey;
-    Boolean mecanica;
-    String culoareLED;
-    String culoareSwitch;
+    private String brand;
+    private String nume;
+    private Boolean tenkey;
+    private Boolean mecanica;
+    private String culoareLED;
+    private String culoareSwitch;
+    private Bitmap imagine;
+    private String link;
+
 
     public StoianTudor(String brand, String nume, Boolean tenkey, Boolean mecanica, String culoareLED) {
         this.brand = brand;
@@ -24,6 +28,8 @@ public class StoianTudor implements Parcelable {
         this.mecanica = mecanica;
         this.culoareLED = culoareLED;
         this.culoareSwitch = null;
+        this.imagine = null;
+        this.link = null;
     }
 
     public StoianTudor(String brand, String nume, Boolean tenkey, Boolean mecanica, String culoareLED, String culoareSwitch){
@@ -33,7 +39,21 @@ public class StoianTudor implements Parcelable {
         this.mecanica = mecanica;
         this.culoareLED = culoareLED;
         this.culoareSwitch = culoareSwitch;
+        this.imagine = null;
+        this.link = null;
     }
+
+    public StoianTudor(String brand, String nume, Boolean tenkey, Boolean mecanica, String culoareLED, String culoareSwitch, Bitmap imagine, String link){
+        this.brand = brand;
+        this.nume = nume;
+        this.tenkey = tenkey;
+        this.mecanica = mecanica;
+        this.culoareLED = culoareLED;
+        this.culoareSwitch = culoareSwitch;
+        this.imagine = imagine;
+        this.link = link;
+    }
+
     public StoianTudor(){
         this.brand = null;
         this.nume = null;
@@ -41,6 +61,8 @@ public class StoianTudor implements Parcelable {
         this.mecanica = null;
         this.culoareLED = null;
         this.culoareSwitch = null;
+        this.imagine = null;
+        this.link = null;
     }
 
     protected StoianTudor(Parcel in) {
@@ -127,6 +149,22 @@ public class StoianTudor implements Parcelable {
 
     public void setCuloareSwitch(String culoareSwitch) {
         this.culoareSwitch = culoareSwitch;
+    }
+
+    public Bitmap getImagine() {
+        return imagine;
+    }
+
+    public void setImagine(Bitmap imagine) {
+        this.imagine = imagine;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     @Override
